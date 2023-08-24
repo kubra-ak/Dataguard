@@ -1,3 +1,17 @@
 alter system set "_log_read_buffers" = 256   scope=spfile;  --not dynamic
 alter system set "_log_read_buffer_size"=128  scope=spfile
 alter system set "_media_recovery_read_batch"=1024 scope=spfile sid='*';
+
+
+ACS note:
+
+•	Dataguard ortamındaki lag’in kapanması için kısa süreli aşağıdaki parametreler FALSE’a çekildi.
+
+db_lost_write_protect
+db_block_checksum
+db_block_checking
+
+Default değerde bırakılan log_read_buffer parametreleri aşağıdaki gibi güncellendi.
+alter system set "_log_read_buffer_size"=256;                                                    
+alter system set "_log_read_buffers"=256 scope=spfile;
+
